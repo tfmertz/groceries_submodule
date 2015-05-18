@@ -1,0 +1,45 @@
+<?php
+function groceries_menu() {
+	$items = [];
+
+	$items['groceries'] = array(
+		'title' => 'Grocery List',
+		'page callback' => 'grocery_list',
+		'access callback' => TRUE,
+		'type' => MENU_NORMAL_ITEM,
+	);
+
+	return $items;
+
+}
+
+function grocery_list() {
+
+	$groceries = [];
+
+	$groceries['eggs'] = [
+		'price' => 1.99,
+		'quantity' => 1,
+		'unit' => 'dozen'
+	];
+
+	$groceries['toilet paper'] = [
+		'price' => 8.99,
+		'quantity' => 24,
+		'unit' => 'rolls'
+	];
+
+	$groceries['butterfinger candy'] = [
+		'price' => 0.99,
+		'quantity' => 1,
+		'unit' => 'bar'
+	];
+
+	$output = "";
+
+	foreach($groceries as $key => $value) {
+		$output .= "<p>You are buying $key for \${$value['price']} per {$value['quantity']} {$value['unit']}.</p>";
+	}
+
+	return $output;
+}
